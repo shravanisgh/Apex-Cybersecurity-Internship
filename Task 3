@@ -1,0 +1,104 @@
+Task 3 – Web Application Penetration Testing using Burp Suite & DVWA
+🎯 Objective
+To intercept, analyze, and manipulate HTTP requests using Burp Suite and perform basic web vulnerability testing on DVWA (Damn Vulnerable Web Application).
+
+🛠 Tools Used
+Kali Linux
+Burp Suite Community Edition
+Firefox Browser
+DVWA (localhost environment)
+
+🧭 Steps Performed
+✔ Step 1 – Launch Burp Suite
+Opened Burp Suite from Kali Linux
+Selected Temporary Project
+Start Burp with default settings
+
+✔ Step 2 – Configure Embedded Browser
+Opened Burp’s built-in Chromium browser
+Browser traffic automatically routed through Burp
+
+✔ Step 3 – Open DVWA
+Accessed:
+http://localhost/dvwa
+Loaded login page successfully
+
+✔ Step 4 – Turn ON Intercept
+In Burp Suite:
+Opened Proxy → Intercept
+Turned Intercept ON
+Browser requests started getting captured
+
+✔ Step 5 – Capture Login Request
+Entered dummy credentials on DVWA login page:
+username = admin
+password = admin
+Request intercepted in Burp Suite
+
+✔ Step 6 – Analyze HTTP Request
+Observed:
+POST method
+Login parameters
+Cookies
+User-Agent
+Referrer
+Identified possibility of:
+Brute-force attack
+SQL Injection
+Parameter tampering
+
+✔ Step 7 – Send Request to Intruder
+Right-clicked captured request
+Selected Send to Intruder
+
+✔ Step 8 – Configure Intruder Positions
+Chose Sniper/Battering Ram
+Set payload positions on:
+username
+password
+
+✔ Step 9 – Add Payloads
+Added list:
+admin
+password
+admin123
+root
+test
+
+✔ Step 10 – Start Attack
+Ran brute-force attack through Intruder
+Observed different response lengths
+Identified valid credential combination
+
+🧪 Results & Observations
+Successfully intercepted login request
+Viewed and modified HTTP parameters
+Performed basic brute force via Intruder
+Understood response length-based detection
+Learned how weak credentials are exploited
+
+🔐 Security Learnings
+Never use default credentials
+Implement account lockout
+Use CAPTCHA
+Add rate-limiting
+Monitor login attempts via logs
+
+✅ Conclusion
+Task 3 successfully demonstrated:
+Burp Suite configuration
+HTTP request/response interception
+Vulnerability testing workflow
+Basic brute-forcing concepts
+DVWA proved how insecure web applications are exploited in real environments.
+
+📎 Screenshots (Sequence Reference)
+Burp Suite opened
+Burp browser opened
+Intercept ON
+DVWA login page
+Request intercepted
+Sent to Intruder
+Intruder → Positions tab
+Intruder → Payloads tab
+Intruder attack result
