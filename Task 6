@@ -1,0 +1,95 @@
+Task 6 – Web Security Headers & Brute-Force Testing (DVWA)
+🎯 Objective
+To analyze missing web security headers and perform brute-force login testing in DVWA, understanding how insecure configurations expose web applications to attacks.
+
+🛠 Tools Used
+Kali Linux
+DVWA (Damn Vulnerable Web Application)
+Web Browser (Firefox/Chromium)
+Browser Developer Tools
+
+🔐 What are Web Security Headers?
+Web security headers are sent by the server along with HTTP responses.
+They help protect against:
+XSS attacks
+Clickjacking
+Content injection
+Man-in-the-middle attacks
+
+Examples include:
+Content-Security-Policy (CSP)
+X-Frame-Options
+X-Content-Type-Options
+Strict-Transport-Security (HSTS)
+Referrer-Policy
+
+🧭 Steps Performed
+✔ Step 1 — Open DVWA
+Launched DVWA in the browser
+Verified that the web application loads correctly
+
+✔ Step 2 — Open Developer Tools
+Pressed F12 / Right-click → Inspect
+Opened Network tab
+
+✔ Step 3 — Check Response Headers
+Reloaded DVWA page
+Selected request from the Network list
+Observed missing security headers such as:
+Content-Security-Policy
+X-Frame-Options
+Strict-Transport-Security
+This indicates the application is not following secure configuration practices.
+
+✔ Step 4 — Set DVWA Security Level
+Navigated to DVWA Security page
+Set security level to Low for testing
+
+✔ Step 5 — Open Brute Force Module
+Went to Brute Force page in DVWA
+Viewed the login form
+
+✔ Step 6 — Failed Login Attempt
+Entered incorrect credentials
+Login failed, showing invalid username/password
+
+✔ Step 7 — Successful Login Attempt
+Used default weak credentials:
+username: admin
+password: password
+Login was successful
+Demonstrates how weak passwords enable brute-force attacks.
+
+🧪 Results & Observations
+DVWA is missing several important security headers
+Application accepts weak credentials
+Brute-force attack is possible
+Security level Low exposes vulnerabilities deliberately
+
+🔐 Security Recommendations
+To secure a real-world web app:
+Enforce strong password policies
+Add account lockout or rate-limiting
+Implement CAPTCHA on login pages
+Use HTTPS with HSTS
+Configure security headers:
+X-Frame-Options
+Content-Security-Policy
+X-Content-Type-Options
+Keep server and framework updated
+
+✅ Conclusion
+Task 6 successfully demonstrated:
+Security header analysis using browser dev tools
+Brute-force vulnerability in DVWA
+Impact of weak configuration and passwords
+This exercise shows why secure headers and authentication policies are essential in web application security.
+
+🖼 Screenshot Checklist (what I used)
+DVWA loaded normally
+Developer tools opened
+Missing security headers view
+DVWA security level set to Low
+Brute Force page opened
+Failed login attempt
+Successful login with default credentials
