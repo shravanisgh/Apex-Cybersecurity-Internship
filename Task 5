@@ -1,0 +1,116 @@
+Task 5 – Advanced Web Attacks using Burp Suite (DVWA)
+🎯 Objective
+To use Burp Suite for intercepting, analyzing, and modifying HTTP requests, and to perform automated fuzzing/brute-force testing with the Intruder tool on DVWA.
+
+🛠 Tools Used
+Kali Linux
+Burp Suite Community Edition
+Burp Embedded Browser
+DVWA application (localhost)
+
+🔎 What is Burp Suite?
+Burp Suite is a professional web-application security testing tool.
+It is used by security analysts for:
+intercepting web traffic
+modifying requests and responses
+scanning for vulnerabilities
+performing automated attacks (Intruder)
+
+🧭 Steps Performed
+✔ Step 1 — Launch Burp Suite
+Opened Burp Suite Community Edition
+Created a Temporary Project
+Started Burp with default settings
+
+✔ Step 2 — Open Burp Browser
+Opened Proxy → Intercept
+Enabled Intercept ON
+Clicked Open Browser
+DVWA opened through Burp’s internal browser
+All traffic automatically passed through Burp proxy.
+
+✔ Step 3 — Access DVWA Login Page
+Browsed to:
+http://localhost/dvwa/login.php
+DVWA login page successfully loaded
+
+✔ Step 4 — Enter Dummy Credentials
+Tried logging in with incorrect credentials:
+username: admin
+password: 123
+Burp intercepted the login request
+
+✔ Step 5 — Analyze HTTP Request
+Observed in Burp:
+POST request
+username and password fields
+cookies
+user-agent
+content length
+form parameters
+
+✔ Step 6 — Send Request to Intruder
+Right-clicked captured request
+Selected Send to Intruder
+Opened Intruder tab
+
+✔ Step 7 — Configure Attack Positions
+Selected attack type:
+Sniper / Battering Ram
+Selected parameters:
+username field
+password field
+
+✔ Step 8 — Add Payload List
+Examples of payloads used:
+admin
+password
+123456
+admin123
+test
+root
+
+✔ Step 9 — Start Intruder Attack
+Clicked Start Attack
+Burp automatically sent multiple login attempts
+
+✔ Step 10 — Analyze Intruder Results
+Observed key fields:
+Status code
+Response length
+Response time
+Different response length indicated valid credentials detected.
+
+🧪 Results & Observations
+Successfully intercepted login requests
+Username & password parameters were visible
+Intruder automated multiple login attempts
+Learned how response differences reveal valid logins
+Understood how weak credentials are exploited
+
+🔐 Security Learnings
+To defend against such attacks, websites should implement:
+Strong password policy
+Account lockout & rate-limiting
+CAPTCHA on login pages
+Multi-factor authentication
+Web Application Firewall (WAF)
+Monitoring & logging of login attempts
+
+✅ Conclusion
+Task 5 demonstrated:
+Burp Suite configuration
+HTTP request interception
+Request manipulation
+Automated fuzzing/brute force via Intruder
+Burp Suite is a powerful tool for both ethical hackers and security testers.
+
+🖼 Screenshot Checklist (what I used)
+Burp Suite opened
+Intercept ON
+Burp Browser
+DVWA login page
+Intercepted request
+Intruder positions
+Intruder payloads
+Intruder attack results
